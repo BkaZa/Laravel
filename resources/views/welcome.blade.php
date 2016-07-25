@@ -37,7 +37,7 @@
     </head>
     <body>
         <?php
-        $name="This's a";
+        $name="This's";
         ?>
         <div class="container">
             <div class="content">
