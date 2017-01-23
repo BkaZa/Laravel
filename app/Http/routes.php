@@ -11,10 +11,28 @@
 */
 
 Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('memo', function () {
+    return view('home');
+});
+
+Route::get('report', function () {
+    return view('home');
+});
+
+Route::get('proc/{proc}','MymoneyController@proc');
+
+Route::get('welcome', function () {
     return view('welcome');
 });
 
 Route::get('laravel.v', function() {#-เช็คเวอชั่น LARAVEL
     $laravel = app();
     return "Your Laravel version is ".$laravel::VERSION;
+});
+
+Route::get('demo', function () {
+    return view('angular_ui');
 });

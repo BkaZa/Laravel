@@ -1,0 +1,8 @@
+<div class="scrollable">
+    <h1 class="scrollable-header app-name"><img ng-src="{{menu_img}}" height="100px"></h1>
+  <div class="scrollable-content">
+    <div class="list-group" ui-turn-off="uiSidebarLeft">
+        <a class="list-group-item" ng-repeat="menu in menus" href="{{menu.link}}">{{menu.name}} <i class="fa fa-chevron-right pull-right"></i></a>
+    </div>
+  </div>
+</div>
