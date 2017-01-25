@@ -47,6 +47,7 @@
         ui-prevent-touchmove-defaults 
   >
       
+      
       <!-- Sidebars -->
       <div ng-include="'partials/LeftSidebar.html'" ng-controller="MenuController"
            ui-track-as-search-param="true"

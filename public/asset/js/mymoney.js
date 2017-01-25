@@ -1,5 +1,3 @@
-/* eslint no-alert: 0 */
-
 'use strict';
 
 //
@@ -47,17 +45,15 @@ app.controller('MenuController',function($scope){
 
 
 app.controller('MainController',function($rootScope,$scope,$http){
-    
     //-select
-    $http.get("proc/category",{proc:'category'}).success(function(response) {
-                console.log( response );
-                var dataSelect = '';//$scope.customers = response.records;
-            });
-    $scope.select = [ 
-                      {id:'1',name:'111'},
-                      {id:'2',name:'222'}
-                    ]
-    $scope.data = { type : '1'};                    
+    $http.get("proc/category").success(function(response) {
+               $scope.select = response;
+    });
+               $scope.data = { type : 1 }
+    $http.get("proc/today").success(function(response) {
+               $scope.data.date = response;
+    });
+    
                         
     //-save button                    
     $scope.save = function() {
@@ -66,12 +62,12 @@ app.controller('MainController',function($rootScope,$scope,$http){
             $rootScope.loading = true;
             var sendData = this.data;
             
-            $http.post("process/mymoney_proc.php",
+            $http.post("proc/save",
             sendData
             ).success(function(response) {
                 console.log( response );
                 $rootScope.loading = false;
-                //$scope.customers = response.records;
+                alert(response);
             });
         }
     };

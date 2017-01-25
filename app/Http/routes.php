@@ -24,6 +24,8 @@ Route::get('report', function () {
 
 Route::get('proc/{proc}','MymoneyController@proc');
 
+Route::post('proc/save','MymoneyController@saveData');
+
 Route::get('welcome', function () {
     return view('welcome');
 });
