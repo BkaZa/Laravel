@@ -44,7 +44,7 @@ app.controller('MenuController',function($scope){
 });
 
 
-app.controller('MainController',function($rootScope,$scope,$http){
+app.controller('MainController',function($rootScope,$scope,$http,$sce){
     //-select
     $http.get("proc/category").success(function(response) {
                $scope.select = response;
@@ -52,6 +52,8 @@ app.controller('MainController',function($rootScope,$scope,$http){
                $scope.data = { type : 1 }
     $http.get("proc/today").success(function(response) {
                $scope.data.date = response;
+               $scope.data.sdate = response;
+               $scope.data.edate = response;
     });
     
                         
@@ -65,11 +67,29 @@ app.controller('MainController',function($rootScope,$scope,$http){
             $http.post("proc/save",
             sendData
             ).success(function(response) {
-                console.log( response );
+                //console.log( response );
                 $rootScope.loading = false;
+                $scope.data.detail = '';
+                $scope.data.price = '';
                 alert(response);
             });
         }
+    };
+    
+    //-search button                    
+    $scope.search = function() {
+    
+            $rootScope.loading = true;
+            var sendData = this.data;
+            
+            $http.post("proc/report",
+            sendData
+            ).success(function(response) {
+                //console.log( response );
+                $rootScope.loading = false;
+                $scope.showReport = $sce.trustAsHtml(response);
+            });
+        
     };
 
     // Needed for the loading screen
@@ -80,7 +100,7 @@ app.controller('MainController',function($rootScope,$scope,$http){
     $rootScope.$on('$routeChangeSuccess', function() {
     $rootScope.loading = false;
     });
-
+    
 });
 
 //
