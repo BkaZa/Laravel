@@ -24,7 +24,7 @@ app.run(function($transform) {
 
 app.controller('MenuController',function($scope){
     
-    $scope.menu_img = 'https://angular.io/resources/images/logos/angular2/angular.svg';
+    $scope.menu_img = 'https://angular.io/resources/images/logos/angular/angular.png';
     
     $scope.menus = [
                     {
