@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\MymoneyModel;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class MymoneyController extends BaseController {
     
@@ -13,7 +14,7 @@ class MymoneyController extends BaseController {
                 
                 $data = MymoneyModel::category();
                 
-                return $data;
+                return Response()->json($data, 200, [], JSON_NUMERIC_CHECK);
             break;
             
             case "today" :
